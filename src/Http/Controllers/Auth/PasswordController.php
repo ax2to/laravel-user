@@ -23,10 +23,19 @@ class PasswordController extends Controller
     /**
      * Create a new password controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest_user');
+    }
+
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getEmail()
+    {
+        return view('laravel-user::auth.password');
     }
 }

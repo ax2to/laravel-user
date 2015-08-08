@@ -7,8 +7,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{ asset('vendor/laravel-user/img/apple-touch-icon.png') }}">
+
     <!-- Place favicon.ico in the root directory -->
+    <link rel="icon" type="image/ico" href="{{ asset('vendor/laravel-user/img/favicon.ico') }}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -55,9 +57,10 @@
 
 @yield('content')
 
-        <!-- jquery -->
+<!-- jquery -->
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+@yield('script')
 </body>
 </html>
