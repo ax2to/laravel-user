@@ -57,6 +57,18 @@
 
 @yield('content')
 
+<feed>
+    <div class="copyright">
+        <div class="container text-center fsize12">
+            Epona theme by <a class="copyright" title="bootstrap themes &amp; templates" target="_blank"
+                              href="http://www.stepofweb.com">stepofweb</a> | All Right Reserved &copy; Your Company
+            LLC. &nbsp;
+            <a class="fsize11" href="page-privacy.html">Privacy Policy</a> |
+            <a class="fsize11" href="page-terms.html">Terms of Service</a>
+        </div>
+    </div>
+</feed>
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
