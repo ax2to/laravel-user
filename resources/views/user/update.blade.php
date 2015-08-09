@@ -1,65 +1,63 @@
 @extends('vendor.laravel-user.layout')
 @section('title', 'Login Page')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
-                    <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+    <section>
+        <div class="container">
+            <h2>{{ Auth::user()->full_name }}</h2>
+        </div>
+        <div class="container">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/update') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">First Name</label>
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-
-                                    <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your
-                                        Password?</a>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="First Email" id="name"
+                               name="name" value="{{ old('firstname',Auth::user()->name) }}">
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Last Name" id="lastname" name="lastname"
+                               value="{{ old('lastname',Auth::user()->lastname) }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Username</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="username"
+                               value="{{ old('username',Auth::user()->username) }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email"
+                               value="{{ old('email',Auth::user()->email) }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
+    </section>
 @endsection
 

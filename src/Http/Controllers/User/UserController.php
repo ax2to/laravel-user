@@ -2,10 +2,9 @@
 
 namespace Ax2to\LaravelUser\Http\Controllers\User;
 
-use Ax2to\LaravelUser\Model\User;
-use Illuminate\Support\Facades\View;
-use Validator;
 use App\Http\Controllers\Controller;
+use Ax2to\LaravelUser\Http\Requests\UpdateProfileRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -29,8 +28,16 @@ class UserController extends Controller
         return view('laravel-user::user.update');
     }
 
-    public function postUpdate()
+    /**
+     * @param UpdateProfileRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function postUpdate(UpdateProfileRequest $request)
     {
+        $user = Auth::user();
+        $user->fill($request->all());
+        $user->save();
 
+        return redirect('user/update');
     }
 }

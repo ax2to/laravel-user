@@ -1,65 +1,48 @@
 @extends('vendor.laravel-user.layout')
 @section('title', 'Login Page')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
-                    <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+    <section>
+        <div class="container">
+            <h2>{{ Auth::user()->full_name }}</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>About</h3>
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-
-                                    <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your
-                                        Password?</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim augue, placerat nec urna
+                        vel, sagittis fringilla mi. Suspendisse lacinia a mi tincidunt lacinia. Nulla et euismod nibh,
+                        quis condimentum magna. Suspendisse sagittis ligula elementum pretium interdum. Praesent eu odio
+                        mollis ex vulputate bibendum eget non lorem. Donec sit amet nulla nunc. Integer luctus eleifend
+                        sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar lacinia
+                        sapien non aliquet. </p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Info</h3>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ Auth::user()->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name</th>
+                            <td>{{ Auth::user()->lastname }}</td>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <td>{{ Auth::user()->username }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ Auth::user()->email }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
-    </div>
+    </section>
 @endsection
 

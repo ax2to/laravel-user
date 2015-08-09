@@ -21,10 +21,10 @@ class LaravelUserServiceProvider extends ServiceProvider
     public function boot()
     {
         // use this if your package has views
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'laravel-user');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-user');
 
         $this->publishes([
-            __DIR__ . '/../resources/views/' => base_path('resources/views/vendor/laravel-user'),
+            __DIR__ . '/../resources/views' => base_path('resources/views/vendor/laravel-user'),
         ]);
 
         // use this if your package has routes
